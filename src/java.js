@@ -1,3 +1,4 @@
+// Mobile Navigation
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -140,41 +141,6 @@ function handleFormSubmit(event) {
     }, 2000);
 }
 
-function validateForm(data) {
-    // Clear previous error messages
-    clearErrorMessages();
-
-    let isValid = true;
-
-    // Required fields validation
-    const requiredFields = ['name', 'email', 'phone', 'message'];
-    requiredFields.forEach(field => {
-        if (!data[field] || data[field].trim() === '') {
-            showFieldError(field, 'Este campo é obrigatório.');
-            isValid = false;
-        }
-    });
-
-    // Email validation
-    if (data.email && !isValidEmail(data.email)) {
-        showFieldError('email', 'Por favor, digite um e-mail válido.');
-        isValid = false;
-    }
-
-    // Phone validation (Brazilian format)
-    if (data.phone && !isValidPhone(data.phone)) {
-        showFieldError('phone', 'Por favor, digite um telefone válido.');
-        isValid = false;
-    }
-
-    // Message length validation
-    if (data.message && data.message.length < 20) {
-        showFieldError('message', 'Por favor, forneça uma mensagem mais detalhada (mínimo 20 caracteres).');
-        isValid = false;
-    }
-
-    return isValid;
-}
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
